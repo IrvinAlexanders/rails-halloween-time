@@ -48,10 +48,10 @@
             <h5><strong>$<%= @costume.price %>/day</strong></h5>
           </div>
           <h6 class="text-success">Free shipping</h6>
-          <div class="d-flex flex-column mt-4">
+          <div class="row">
             <% if @costume.user == current_user %>
-              <button class="btn btn-danger btn-sm" type="button">Edit</button>
-              <%= button_to "Remove", costume_path(@costume), method: :delete, class: "btn btn-outline-danger btn-sm mt-2"%>
+              <%= button_to "Edit", edit_costume_path(@costume), method: :patch, class: "col btn btn-outline-danger btn-sm mt-2" %>
+              <%= button_to "Remove", costume_path(@costume), method: :delete, class: "col btn btn-outline-danger btn-sm mt-2"%>
             <% else %>
             <br>
             <% end %>
@@ -68,7 +68,7 @@
 
     <div class="row">
       <div class="col-md-9">
-
+      <% if current_user != @costume.user %>
        <div class="container justify-content-center">
         <%= simple_form_for [@costume, @review] do |f| %>
         <%= f.input :rating, collection: 0..5, include_blank: false %>
@@ -76,6 +76,7 @@
         <%= f.submit class: "btn btn-outline-danger btn-block" %>
         <% end %>
        </div>
+      <% end %>
       <div class="container mt-3">
         <% @costume.reviews.reverse.each do |review| %>
           <div class="box mb-3">
@@ -103,4 +104,5 @@
 
   </div> <!-- container .//  -->
 </section>
+
 <!-- ========================= SECTION CONTENT END// ========================= -->

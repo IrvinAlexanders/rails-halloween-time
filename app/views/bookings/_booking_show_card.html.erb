@@ -1,0 +1,27 @@
+<div class="container d-flex flex-wrap">
+  <% @bookings.sort_by(&:total_price).reverse.each do |booking| %>
+    <div class="card-trip m-2">
+      <%= cl_image_tag booking.costume.photo.key, width: 350, height: 200, gravity: :face, crop: :fill  %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= "Owner@me.com"%></h2>
+          <p><%= booking.costume.name%></p>
+          <p><%= booking.start_date%></p>
+          <p><%= booking.end_date%></p>
+          <p><%= booking.total_days %> day rental at $<%= booking.costume.price %> a day</p>
+        </div>
+        <h2 class="card-trip-pricing"><%= "$#{booking.total_price}/total"%></h2>
+        <% if booking.costume.user.photo.attached? %>
+            <%= cl_image_tag booking.costume.user.photo.key, class: "avatar-bordered card-trip-user", gravity: :face, crop: :fill %>
+        <% else %>
+            <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered" />
+        <% end %>
+        <% if @user.email == 'irvin-alexanders@outlook.com' %>
+          <h2><%= booking.status %></h2>
+        <% elsif @booking.user == current_user %>
+          <%= link_to "Confirm Booking", confirm_booking_path(booking), class: "btn btn-outline-success" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

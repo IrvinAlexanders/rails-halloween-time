@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   devise_for :users
   root to: 'pages#home'
-
+  get '/profile', to: 'pages#profile'
   resources :costumes do
     resources :bookings
     resources :reviews, only: [:create]

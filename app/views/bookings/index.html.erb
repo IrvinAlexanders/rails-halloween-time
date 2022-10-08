@@ -1,0 +1,27 @@
+<div class="d-flex container-fluid my-0 flex-grow-1 align-content-center">
+  <div class="mr-5 mt-4">
+    <ul class="tabs-underlined" id="myTab" role="tablist">
+      <li class="row nav-item" role="presentation">
+        <a class="active tab-underlined" id="my-costumes-tab" data-toggle="tab" href="#bookings" role="tab" aria-controls="home" aria-selected="true"><h5 style="color: green;">Lending</h5></a>
+      </li>
+      <li class="row nav-item" role="presentation">
+        <a class="tab-underlined" id="my-bookings-tab" data-toggle="tab" href="#requests" role="tab" aria-controls="profile" aria-selected="false"><h5 style="color: green;">Renting</h5></a>
+      </li>
+      <li class="row nav-item" role="presentation">
+        <a class="tab-underlined" id="profile-tab" data-toggle="tab" href="#converstions" role="tab" aria-controls="converstion" aria-selected="false"><h5 style="color: green;">Profile</h5></a>
+        </li>
+    </ul>
+  </div>
+     <div class="mx-auto">
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade py-3 show active" id="bookings" role="tabpanel" aria-labelledby="my-costumes-tab">
+        <div class="container d-flex flex-wrap">
+          <% current_user.costumes.each do |costume| %>
+            <%= render "costumes/costume_show_card", costume: costume %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

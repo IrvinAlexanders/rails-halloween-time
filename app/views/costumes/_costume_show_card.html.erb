@@ -1,0 +1,17 @@
+<div class="card m-2">
+  <%= cl_image_tag costume.photo.key, width: 350, height: 200, gravity: :face, crop: :fill %>
+  <div class="card-trip-infos">
+    <div>
+      <h2><%=costume.name%></h2>
+      <p><%= costume.description%></p>
+    </div>
+      <h2 class="card-trip-pricing"><%= "$#{costume.price}/day"%></h2>
+      <% if costume.user != current_user%>
+        <% if costume.user.photo.attached? %>
+          <%= cl_image_tag costume.user.photo.key, class: "avatar-bordered card-trip-user", gravity: :face, crop: :fill %>
+        <% else %>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        <% end %>
+      <% end %>
+  </div>
+</div>

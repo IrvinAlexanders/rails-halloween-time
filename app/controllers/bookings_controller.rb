@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.status = 0
     if @booking.save
-      redirect_to bookings_path, notice: "Booked costume! Waiting for confirmation."
+      redirect_to costume_path(@costume), notice: "Booked costume! Waiting for confirmation."
     else
       render "costumes/show"
     end
