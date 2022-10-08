@@ -1,0 +1,83 @@
+<section class="section-intro padding-y-sm pt-4">
+<div class="container" style="width: 100%;">
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+	<div class="carousel-item">
+		<%= image_tag "https://res.cloudinary.com/dh9pamyo4/image/upload/v1664931698/banner1_y2lnsg.png", class: "d-block w-100", alt: "swamp" %>
+	</div>
+	<div class="carousel-item active">
+		<%= image_tag "https://res.cloudinary.com/dh9pamyo4/image/upload/v1664931697/banner2_etk235.png", class: "d-block w-100", alt: "flight", style: "height: 429px;" %>
+	</div>
+  </div>
+
+</div>
+
+</div> <!-- container //  -->
+</section>
+
+<div class="cards-landing mx-5 mt-5 mb-5">
+  <div>
+    <%= link_to costumes_path(category: 'Heroes') do %>
+      <div class="card-landing" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dh9pamyo4/image/upload/v1664649779/heroes_l2utix.jpg)">
+        Heroes
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to costumes_path(category: 'Horror') do %>
+      <div class="card-landing" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://www.gannett-cdn.com/-mm-/c03bfeca7fc182ff3c06a2364c8ea09652dbccba/c=0-198-3963-2437/local/-/media/2015/10/16/Louisville/Louisville/635805905136741193-HalloweenMakeup-2.jpg?width=660&height=372&fit=crop&format=pjpg&auto=webp)">
+        Horror
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to costumes_path(category: 'Movies') do %>
+      <div class="card-landing" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://previews.123rf.com/images/jqnoc/jqnoc1710/jqnoc171000249/87503499-people-disguised-in-star-wars-costumes-for-the-iii-imperial-stormtroopers-parade-2017-in-the-old-cit.jpg)">
+        Movies
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to costumes_path(category: 'Animals') do %>
+      <div class="card-landing" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://m.media-amazon.com/images/S/aplus-seller-content-images-us-east-1/A13V1IB3VIYZZH/A2OA7G0W7AULYV/B06WCZFBM6/yTQb6kvXRaSL._UX960_TTW__.jpg)">
+        Animals
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to costumes_path(category: 'Anime') do %>
+      <div class="card-landing" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dh9pamyo4/image/upload/v1664655475/maruto_ftnwdo.jpg)">
+        Anime
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to costumes_path(category: 'TV Show') do %>
+      <div class="card-landing" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://previews.123rf.com/images/neydt/neydt1808/neydt180800176/111725650-mulhouse-france-august-17-2018-group-of-fans-of-the-serie-tv-la-casa-de-papel-paper-house-on-netflix.jpg)">
+        TV Show
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to costumes_path(category: 'Historical Figures') do %>
+      <div class="card-landing" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://mtv-main-assets.mountvernon.org/files/home/classic-sml-2020-mvm-summer-header-2.png)">
+        Historical Figures
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to costumes_path(category: 'Princess') do %>
+      <div class="card-landing" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://i.pinimg.com/564x/d9/83/37/d98337104947a10aa7c0833d1859ec4c.jpg)">
+        Princess
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to costumes_path(category: 'Cartoon') do %>
+      <div class="card-landing" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://static3.thegamerimages.com/wordpress/wp-content/uploads/2018/07/cosoag.jpg)">
+        Cartoon
+      </div>
+    <% end %>
+  </div>
+</div>

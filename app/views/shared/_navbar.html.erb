@@ -1,0 +1,46 @@
+<div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "/", class: "navbar-brand" do %>
+      <div class="d-flex gap-3">
+      <%= image_tag "logoH.png" %>
+      <h1 class="mt-2" style="color: white;">Halloween Time</h1>
+      </div>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+      <%= form_tag costumes_path, class: "d-flex", role: "search", id: "letters", method: :get do %>
+        <%= text_field_tag :query, params[:query], id:"banner-typed-text", class: "form-control me-2", style:"background-color: none", type: "search", placeholder: "Search for costumes"  %>
+        <%= submit_tag "Search", class:"btn btn-outline-secondary" %>
+      <% end %>
+      <li class="navbar-link">
+          <%= link_to "Home", "/" %>
+      </li>
+      <% if user_signed_in? %>
+      <li class="navbar-link-d dropdown-center">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        </a>
+        <ul class="dropdown-menu">
+            <%= link_to "Create Costume", new_costume_path, class: "dropdown-item" %>
+            <%= link_to "Manage Bookings", bookings_path, class: "dropdown-item" %>
+            <li><hr class="dropdown-divider"></li>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </ul>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-bordered dropdown-toggle", id: "navbarDropdown", data: {toggle: "dropdown"}, 'aria-haspopup': true, 'aria-expanded': false, gravity: :face, crop: :fill%>
+        <% else %>
+          <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered dropdown-toggle mr-2", id= "navbarDropdown", data-toggle= "dropdown", aria-haspopup="true", aria-expanded="false" />
+        <% end %>
+      </li>
+      <% else %>
+        <li class="navbar-link">
+          <%= link_to "Login", new_user_session_path %>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </li>
+      <% end %>
+    </div>
+  </div>
+</div>

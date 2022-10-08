@@ -79,3 +79,10 @@ end
 gem "cloudinary"
 gem "dotenv-rails"
 gem "devise"
+gem 'pg_search'
+
+gem 'pundit'
+
+gem 'open-uri'
+
+gem "geocoder"
