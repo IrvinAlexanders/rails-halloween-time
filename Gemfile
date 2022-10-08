@@ -84,5 +84,5 @@ gem 'pg_search'
 gem 'pundit'
 
 gem 'open-uri'
-
+gem 'faker'
 gem "geocoder"

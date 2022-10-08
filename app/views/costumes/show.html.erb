@@ -1,0 +1,106 @@
+<section class="section-content padding-y bg">
+  <div class="container">
+
+    <!-- ============================ COMPONENT 1 ================================= -->
+    <div class="card">
+      <div class="row no-gutters">
+        <aside class="col-md-6">
+          <article class="gallery-wrap">
+            <div class="img-big-wrap mainImage">
+              <center>
+                <div class="img-magnifier-container">
+                  <%= cl_image_tag @costume.photo.key, gravity: :face, crop: :fill %>
+                </div>
+              </center>
+            </div> <!-- img-big-wrap.// -->
+
+          </article> <!-- gallery-wrap .end// -->
+
+          <ul class="thumb">
+              <li>
+                  <%= link_to @costume.photo.key, target: "mainImage" do %>
+                    <%= cl_image_tag @costume.photo.key, gravity: :face, crop: :fill, alt: "Product Image" %>
+                  <% end %>
+                  <% @costume.photos.each do |photo| %>
+                    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+                  <% end %>
+              </li>
+          </ul>
+
+        </aside>
+        <main class="col-md-6 border-left">
+
+          <% if(@costume.user != current_user) %>
+            <%= render "bookings/form" %>
+          <% else %>
+            <div class="col-md-6 mt-1">
+          <h5><strong><%= @costume.name %></h5>
+          </strong>
+          <div class="d-flex flex-row">
+            <div class="ratings mr-2"><i class="fas fa-star"></i><%= @costume.average_rating %></div>
+          </div>
+          <div class="mt-1 mb-1 spec-1"><em><%= @costume.user.address %></em></div>
+          <div class="mt-1 mb-1 spec-1"><strong><%= @costume.category %></strong></div>
+          <div class="mt-1 mb-1 spec-1"><%= @costume.description %></div>
+        </div>
+        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+          <div class="d-flex flex-row align-items-center">
+            <h5><strong>$<%= @costume.price %>/day</strong></h5>
+          </div>
+          <h6 class="text-success">Free shipping</h6>
+          <div class="d-flex flex-column mt-4">
+            <% if @costume.user == current_user %>
+              <button class="btn btn-danger btn-sm" type="button">Edit</button>
+              <%= button_to "Remove", costume_path(@costume), method: :delete, class: "btn btn-outline-danger btn-sm mt-2"%>
+            <% else %>
+            <br>
+            <% end %>
+          </div>
+          </div>
+          <% end%>
+
+        </main> <!-- col.// -->
+      </div> <!-- row.// -->
+    </div> <!-- card.// -->
+    <!-- ============================ COMPONENT 1 END .// ================================= -->
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-9">
+
+       <div class="container justify-content-center">
+        <%= simple_form_for [@costume, @review] do |f| %>
+        <%= f.input :rating, collection: 0..5, include_blank: false %>
+        <%= f.input :content %>
+        <%= f.submit class: "btn btn-outline-danger btn-block" %>
+        <% end %>
+       </div>
+      <div class="container mt-3">
+        <% @costume.reviews.reverse.each do |review| %>
+          <div class="box mb-3">
+            <div class="icontext w-100">
+              <div class="text">
+                <img src='https://kitt.lewagon.com/placeholder/users/random' class="avatar-large" />
+                <h6 class="mb-1"><%= review.costume.user.email %></h6>
+                <span class="date text-muted float-md-right"><%= review.created_at.strftime("%Y-%m-%d") %></span>
+                <p><%= review.content %></p>
+                <div class="d-flex rating-star">
+                  <p><% review.rating.times do %></p>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+
+      </div> <!-- col.// -->
+    </div> <!-- row.// -->
+
+
+  </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

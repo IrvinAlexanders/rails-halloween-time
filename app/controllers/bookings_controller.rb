@@ -3,7 +3,6 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all
-    @bookings = policy_scope(Booking)
   end
   def edit
 
@@ -25,7 +24,6 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    authorize @booking
   end
 
   def create
@@ -34,7 +32,6 @@ class BookingsController < ApplicationController
     @booking.costume = @costume
     @booking.user = current_user
     @booking.status = 0
-    authorize @booking
     if @booking.save
       redirect_to bookings_path, notice: "Booked costume! Waiting for confirmation."
     else
@@ -50,7 +47,6 @@ class BookingsController < ApplicationController
 
   def set_booking
    @booking = Booking.find(params[:id])
-   authorize @booking
   end
 
   def booking_params

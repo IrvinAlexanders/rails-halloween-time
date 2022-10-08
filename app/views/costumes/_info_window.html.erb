@@ -1,0 +1,21 @@
+<% user.costumes.each do |costume| %>
+  <div class="card mb-2 p-3">
+    <div>
+      <%= cl_image_tag costume.photo.key, width: 150, height: 100, gravity: :face, crop: :fill %>
+        <h2><%= costume.name %></h2>
+        <p><%= costume.description %></p>
+        <p><%= user.address %></p>
+    </div>
+      <h2 class="card-trip-pricing">$<%= costume.price %></h2>
+        <% if costume.user.photo.attached? %>
+          <%= cl_image_tag costume.user.photo.key, class: "avatar-bordered card-trip-user", gravity: :face, crop: :fill %>
+        <% else %>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        <% end %>
+      <%= link_to costume_path(costume) do %>
+        <div class="">
+          <button type="button" class="btn btn-outline-danger btn-block m-1 btn-sm">Rent me!</button>
+        </div>
+      <% end %>
+  </div>
+<% end %>

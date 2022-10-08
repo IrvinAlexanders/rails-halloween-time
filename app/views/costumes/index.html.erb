@@ -1,0 +1,167 @@
+<section class="section-pagetop bg">
+  <div class="container">
+    <h2 class="title-page">Find your Costume!</h2>
+
+  </div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION INTRO END// ========================= -->
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+  <div class="container">
+
+    <div class="row">
+      <aside class="col-md-3">
+
+        <div class="card">
+          <article class="filter-group">
+            <header class="card-header">
+              <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+                <i class="icon-control fa fa-chevron-down"></i>
+                <h6 class="title" style="color: green;">Categories</h6>
+              </a>
+            </header>
+            <div class="filter-content collapse show" id="collapse_1" style="">
+              <div class="card-body">
+
+                <ul class="list-menu">
+                  <li><a href="{% url 'store' %}">Todos</a></li>
+                  <li><a href="/costumes?category=Heroes"> Heroes </a></li>
+                  <li><a href="/costumes?category=Horror"> Horror </a></li>
+                  <li><a href="/costumes?category=Movies"> Movies </a></li>
+                  <li><a href="/costumes?category=Animals"> Animals </a></li>
+                  <li><a href="/costumes?category=Anime"> Anime </a></li>
+                  <li><a href="/costumes?category=TV+Show"> TV Show </a></li>
+                  <li><a href="/costumes?category=Historical+Figures"> Historical </a></li>
+                  <li><a href="/costumes?category=Princess"> Princess </a></li>
+                  <li><a href="/costumes?category=Cartoon"> Cartoon </a></li>
+                </ul>
+
+              </div> <!-- card-body.// -->
+            </div>
+          </article> <!-- filter-group  .// -->
+          <article class="filter-group">
+            <header class="card-header">
+              <a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">
+                <i class="icon-control fa fa-chevron-down"></i>
+                <h6 class="title" style="color: green;">Sizes </h6>
+              </a>
+            </header>
+            <div class="filter-content collapse show" id="collapse_4" style="">
+              <div class="card-body">
+                <label class="checkbox-btn">
+                  <input type="checkbox">
+                  <span class="btn btn-light"> XS </span>
+                </label>
+
+                <label class="checkbox-btn">
+                  <input type="checkbox">
+                  <span class="btn btn-light"> SM </span>
+                </label>
+
+                <label class="checkbox-btn">
+                  <input type="checkbox">
+                  <span class="btn btn-light"> LG </span>
+                </label>
+
+                <label class="checkbox-btn">
+                  <input type="checkbox">
+                  <span class="btn btn-light"> XXL </span>
+                </label>
+              </div><!-- card-body.// -->
+            </div>
+          </article> <!-- filter-group .// -->
+
+          <article class="filter-group">
+            <header class="card-header">
+              <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
+                <i class="icon-control fa fa-chevron-down"></i>
+                <h6 class="title" style="color: green;">Prices </h6>
+              </a>
+            </header>
+            <div class="filter-content collapse show" id="collapse_3" style="">
+              <div class="card-body">
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label>Min</label>
+                    <!-- <input class="form-control" placeholder="$0" type="number"> -->
+                    <select class="mr-2 form-control">
+                      <option value="0">$0</option>
+                      <option value="50">$50</option>
+                      <option value="100">$100</option>
+                      <option value="150">$150</option>
+                      <option value="200">$200</option>
+                      <option value="500">$500</option>
+                      <option value="1000">$1000</option>
+                    </select>
+                  </div>
+                  <div class="form-group text-right col-md-6">
+                    <label>Max</label>
+                    <select class="mr-2 form-control">
+                      <option value="50">$50</option>
+                      <option value="100">$100</option>
+                      <option value="150">$150</option>
+                      <option value="200">$200</option>
+                      <option value="500">$500</option>
+                      <option value="1000">$1000</option>
+                      <option value="2000">$2000+</option>
+                    </select>
+                  </div>
+                </div> <!-- form-row.// -->
+                <button class="btn btn-block btn-outline-secondary mt-1">Search</button>
+              </div><!-- card-body.// -->
+            </div>
+          </article> <!-- filter-group .// -->
+
+        </div> <!-- card.// -->
+
+      </aside> <!-- col.// -->
+      <main class="col-md-9">
+
+        <header class="border-bottom mb-4 pb-3">
+          <div class="form-inline">
+            <span class="mr-md-auto">  <b><%= @costumes.size %></b> Products Found </span>
+
+          </div>
+        </header><!-- sect-heading -->
+
+        <div class="row">
+          <% if @costumes.size > 0 %>
+          <% @costumes.each do |costume| %>
+          <div class="col-md-4">
+            <figure class="card card-product-grid">
+              <div class="img-wrap">
+
+                <%= link_to costume_path(id:costume, query: params[:query]) do %>
+                  <%= cl_image_tag costume.photo.key, gravity: :face, crop: :fill %></a>
+                <% end %>
+
+              </div> <!-- img-wrap.// -->
+              <figcaption class="info-wrap">
+                <div class="fix-height">
+                  <strong><%= costume.name %></strong>
+                  <div class="price-wrap mt-2">
+                    <span class="price">$<%= costume.price %>/ day</span>
+                  </div> <!-- price-wrap.// -->
+                </div>
+                 <%= link_to "View Details", costume_path(id:costume, query: params[:query]), class: "btn btn-block btn-success" %>
+              </figcaption>
+            </figure>
+          </div> <!-- col.// -->
+          <% end %>
+          <% else %>
+            <div>
+                <h2> No results found </h2>
+            </div>
+          <% end %>
+
+        </div> <!-- row end.// -->
+
+      </main> <!-- col.// -->
+
+    </div>
+
+  </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

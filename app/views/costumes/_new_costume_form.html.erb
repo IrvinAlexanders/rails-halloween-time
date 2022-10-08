@@ -1,0 +1,14 @@
+<div class="container d-flex justify-content-center">
+  <div class="card card-product-grid p-3 m-3" style="">
+    <h1 style="font-family: arial;"><strong>Add new costume</strong></h1>
+    <%= simple_form_for [@costume] do |f| %>
+      <%= f.input :name, required: false %>
+      <%= f.input :description, required: false %>
+      <%= f.input :price, required: false %>
+      <%= f.input :category, required: false, collection: Costume::CATEGORIES, include_blank: false, style: "m-1" %>
+      <%= f.input :photo, label: "Main Image", required: true, as: :file , class: "btn btn-outline-danger mb-3" %>
+      <%= f.input :photos, label: "Additional photos", required: false, as: :file , input_html: { multiple: true }, class: "btn btn-outline-danger mb-3" %>
+      <%= f.submit "Add Costume", class: "btn btn-outline-danger mb-3"%>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="card p-3">
+  <div class="container justify-content-center">
+    <h4><strong><%= @costume.name %></strong></h4>
+    <h6><strong><%= @costume.category %></strong></h6>
+    <p><%= @costume.description %></p>
+    <p><strong>$<%= @costume.price %></strong></p>
+    <p><em><small><%= @costume.user.address %></strong></em></p>
+    <h6><%= @costume.user.email %></h6>
+    <%= simple_form_for [@costume, @booking] do |f| %>
+      <%= f.input :start_date, html5: true, required: false %>
+      <%= f.input :end_date, html5: true, required: false%>
+      <%= f.submit class: "btn btn-outline-danger btn-block"  %>
+    <% end %>
+    <div class="containter my-3">
+      <%= link_to 'Back', costumes_path(query: params[:query]), class: "btn btn-outline-danger" %>
+      <%= link_to 'Home', root_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+</div>
