@@ -1,7 +1,7 @@
 class CostumesController < ApplicationController
   before_action :set_costume, only: [:show, :update, :destroy]
   # visitors can see index page, otherwise will ask for login
-
+  
 
   def index
     if params[:query].blank?

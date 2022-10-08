@@ -145,7 +145,11 @@
                     <span class="price">$<%= costume.price %>/ day</span>
                   </div> <!-- price-wrap.// -->
                 </div>
-                 <%= link_to "View Details", costume_path(id:costume, query: params[:query]), class: "btn btn-block btn-success" %>
+                <% if user_signed_in? %>
+                  <%= link_to "View Details", costume_path(id:costume, query: params[:query]), class: "btn btn-block btn-success" %>
+                <% else %>
+                  <%= link_to "View Details", new_user_session_path, class: "btn btn-block btn-success" %>
+                <% end %>
               </figcaption>
             </figure>
           </div> <!-- col.// -->
