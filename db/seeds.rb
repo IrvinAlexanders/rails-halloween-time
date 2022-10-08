@@ -11,9 +11,6 @@ require 'faker'
 
 puts "Testing..."
 puts "Cleaning up db"
-Costume.destroy_all
-User.destroy_all
-puts "DB is clean"
 
 user_image = URI.open('https://source.unsplash.com/random')
 user = User.create!(
